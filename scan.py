@@ -45,10 +45,10 @@ def scanner(ip, menu):
 
 if len(sys.argv) < 2:
 	print(menu+'\n')
-	print("\n[WARNING] - PARAMETROS INCORRETOS : ")
-	print("Scan.py 127.0.0.1\n")
+	print("\n[WARNING] - PARAMETROS INCORRETOS :) ")
+	print("Use: root@localhost~# Scan.py 127.0.0.1\n")
 
 else:	
-	print sys.argv
+	print(sys.argv)
 	ip = sys.argv[1]
 	scanner(ip, menu)
