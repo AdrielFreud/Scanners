@@ -1,10 +1,11 @@
 import socket, sys
+from scapy.all import *
 
 menu = r'''
 -----------------------------------------
 
   #  Desenvolvido por Adriel Freud!
-  #  Contato: businessc0rp2k17@gmail.com 
+  #  Contato: businessc0ro2k17@gmail.com 
   #  FB: http://www.facebook.com/xrn401
   #   =>DebutySecTeamSecurity<=
 
@@ -22,21 +23,63 @@ $$\   $$ |$$ |     $$  __$$ |$$ |  $$ |$$ |  $$ |$$   ____|$$ |
 -----------------------------------------
 '''
 
+def get_ttl(destino):
+	try:
+		ip = destino
+		send = IP(dst=ip)
+		if send.ttl == 64:
+			print("""
+			SISTEMA OPERACIONAL
+				========= 
+				= LINUX =
+				=========
+			\n\n""")
+		elif send.ttl == 128:
+			print("""
+			SISTEMA OPERACIONAL
+				===========
+				= WINDOWS =
+				===========
+			\n\n""")
+		elif send.ttl == 30:
+			print("""
+			SISTEMA OPERACIONAL
+				===========
+				= CYCLADES =
+				===========
+			\n\n""")
+		elif send.ttl == 255:
+			print("""
+			SISTEMA OPERACIONAL
+				===========
+				= OPENBSD =
+				===========
+			\n\n""")
+		else:
+			print("[!] Impossivel Detectar Systema!\n\n")
+	except:
+		print("[!] Impossivel Detectar Systema!\n\n")
+
 def scanner(ip, menu):
 	print(menu+'\n')
+	get_ttl(ip)
 	portas_encontradas = []
 	if 'http' or 'https' in ip:
 		sobre_ip = ip.strip('https:/')
 		ip = socket.gethostbyname(sobre_ip)
 
-	for ports in range(0, 3306):
+	for ports in range(0, 1180):
 		client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		client.settimeout(0.03)
 		code = client.connect_ex((ip, ports))
 
 		if code == 0:
 			portas_encontradas.append(ports)
-			print("[STATUS] - Porta %s Aberta!\n"%ports)
+			print("\n\n[STATUS] - Port %s OPEN!"%ports)
+			try:
+				print("[GRAB - SERVICE] - Service: %s\n"%socket.getservbyport(ports))
+			except:
+				print("[GRAB - SERVICE] - Service: NOT FOUND\n")
 			client.close()
 
 	print("[PORTAS ABERTAS] - %s"%portas_encontradas)
@@ -46,7 +89,7 @@ def scanner(ip, menu):
 if len(sys.argv) < 2:
 	print(menu+'\n')
 	print("\n[WARNING] - PARAMETROS INCORRETOS :) ")
-	print("Use: root@localhost~# Scan.py 127.0.0.1\n")
+	print("\nUse: root@localhost~# Scan.py 127.0.0.1\n")
 
 else:	
 	print(sys.argv)
