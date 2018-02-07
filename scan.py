@@ -25,31 +25,33 @@ $$\   $$ |$$ |     $$  __$$ |$$ |  $$ |$$ |  $$ |$$   ____|$$ |
 
 def get_ttl(destino):
 	try:
-		ip = destino
-		send = IP(dst=ip)
+		ip = IP()
+		ping = ICMP()
+		ip.dst = destino
+		send = sr1(ip/ping)
 		if send.ttl == 64:
-			print("""
+			print("""\n
 			SISTEMA OPERACIONAL
 				========= 
 				= LINUX =
 				=========
 			\n\n""")
 		elif send.ttl == 128:
-			print("""
+			print("""\n
 			SISTEMA OPERACIONAL
 				===========
 				= WINDOWS =
 				===========
 			\n\n""")
 		elif send.ttl == 30:
-			print("""
+			print("""\n
 			SISTEMA OPERACIONAL
 				===========
 				= CYCLADES =
 				===========
 			\n\n""")
 		elif send.ttl == 255:
-			print("""
+			print("""\n
 			SISTEMA OPERACIONAL
 				===========
 				= OPENBSD =
@@ -92,6 +94,5 @@ if len(sys.argv) < 2:
 	print("\nUse: root@localhost~# Scan.py 127.0.0.1\n")
 
 else:	
-	print(sys.argv)
 	ip = sys.argv[1]
 	scanner(ip, menu)
