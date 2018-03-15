@@ -1,5 +1,4 @@
 import socket, sys
-from scapy.all import *
 
 menu = r'''
 -----------------------------------------
@@ -24,6 +23,7 @@ $$\   $$ |$$ |     $$  __$$ |$$ |  $$ |$$ |  $$ |$$   ____|$$ |
 '''
 
 def get_ttl(destino):
+	from scapy.all import *
 	try:
 		ip = IP()
 		ping = ICMP()
