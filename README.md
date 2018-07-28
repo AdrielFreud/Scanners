@@ -2,10 +2,10 @@
 
 Lenguages used to grab;
 <lu>
-  <li>
-    <li>C Lenguage.</li>
-    <li>Python Script Lenguage.</li>
-  </li>
+    <li>
+      C Lenguage.
+      Python Script Lenguage.
+    </li>
 </lu>
 <br/>
 <p>AdrielFreud.</p>
