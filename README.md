@@ -1,11 +1,9 @@
 # Scanners
 
 Lenguages used to grab;
-<lu>
-    <li>
-      C Lenguage.
-      Python Script Lenguage.
-    </li>
-</lu>
+<ul>
+    <li>C Lenguage.</li>
+    <li>Python Script Lenguage.</li>
+</ul>
 <br/>
 <p>AdrielFreud.</p>
