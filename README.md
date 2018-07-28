@@ -1,7 +1,7 @@
 # Scanners
 
+Lenguages used to grab;
 <lu>
-  Lenguages used to grab;
   <li>C.</li>
   <li>Python.</li>
 </lu>
